@@ -105,5 +105,8 @@ public class OrderBean implements WritableComparable<OrderBean> {
 		setPrice(s5);
 		setOAmount(s6);
 	}
+	public String toString(){
+		return oId + "\t" + oData + "\t" + pId + "\t" + pName + "\t" + price + "\t" + oAmount
+	}
 
 }
