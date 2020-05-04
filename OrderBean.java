@@ -7,12 +7,12 @@ import java.io.*;
 
 public class OrderBean implements WritableComparable<OrderBean> {
 
-	private String oId;
-	private String oData;
-	private String pId;
-	private String pName;
-	private String price;
-	private String oAmount;
+	private String oId;//订单id
+	private String oData;//订单日期
+	private String pId;//商品id
+	private String pName;//商品名称
+	private String price;//商品价格
+	private String oAmount;//数量
 
 	@Override
 	public void readFields(DataInput d) throws IOException {
@@ -40,9 +40,9 @@ public class OrderBean implements WritableComparable<OrderBean> {
 	public int compareTo(OrderBean o) {
 		// TODO Auto-generated method stub
 
-		int comRes = this.pId.compareTo(o.pId);
+		int comRes = this.pId.compareTo(o.pId);//先按照pid排序
 		if (comRes == 0) {
-			return o.pName.compareTo(this.pName);
+			return o.pName.compareTo(this.pName);//在按照pname排序并且将product内容放在order前面
 		} else {
 			return comRes;
 		}
@@ -97,7 +97,7 @@ public class OrderBean implements WritableComparable<OrderBean> {
 	}
 
 	// OID\ODATA\PID\PNAME\PRICE\OAMOUNT
-	public void setAll(String s1, String s2, String s3, String s4, String s5, String s6) {
+	public void setAll(String s1, String s2, String s3, String s4, String s5, String s6) {//设置值
 		setOId(s1);
 		setOData(s2);
 		setPId(s3);
@@ -105,7 +105,7 @@ public class OrderBean implements WritableComparable<OrderBean> {
 		setPrice(s5);
 		setOAmount(s6);
 	}
-	public String toString(){
+	public String toString(){//不加toStirng函数，最后输出内存的地址
 		return oId + "\t" + oData + "\t" + pId + "\t" + pName + "\t" + price + "\t" + oAmount
 	}
 

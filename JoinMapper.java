@@ -18,11 +18,10 @@ public class JoinMapper extends Mapper<LongWritable, Text, OrderBean, NullWritab
 	protected void setup(Mapper<LongWritable, Text, OrderBean, NullWritable>.Context context)
 			throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-
-		FileSplit fs = (FileSplit) context.getInputSplit();
+		FileSplit fs = (FileSplit) context.getInputSplit();//读入文件获取文件名
 		fileName = fs.getPath().getName();
 
-		super.setup(context);
+		super.setup(context);//解析缓存中的数据
 	}
 
 	@Override
@@ -32,9 +31,9 @@ public class JoinMapper extends Mapper<LongWritable, Text, OrderBean, NullWritab
 		// TODO Auto-generated method stub
 		String[] fields = value.toString().split(" ");
 		// OID\ODATA\PID\PNAME\PRICE\OAMOUNT
-		if (fileName.equals("product.txt")) {
+		if (fileName.equals("product.txt")) {//product表数据赋值
 			ob.setAll("", "", fields[0], fields[1], fields[2], "");
-		} else {
+		} else {//order表数据赋值
 			ob.setAll(fields[0], fields[1], fields[2], "", "", fields[3]);
 		}
 		context.write(ob, NullWritable.get());

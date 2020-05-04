@@ -11,10 +11,10 @@ public class JoinComparator extends WritableComparator{
 	}
 	
 	@Override
-	public int compare(WritableComparable a, WritableComparable b) {
+	public int compare(WritableComparable a, WritableComparable b) {//自定义分组
 		// TODO Auto-generated method stub
 		OrderBean oa = (OrderBean)a;
 		OrderBean ob = (OrderBean)b;
-		return oa.getPId().compareTo(ob.getPId());
+		return oa.getPId().compareTo(ob.getPId());//相同pid分到一组
 	}
 }
