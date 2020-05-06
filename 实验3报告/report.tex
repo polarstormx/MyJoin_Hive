@@ -213,11 +213,32 @@ value设为空NullWritable，自定义key数据类型OrderBean，将数据全部
 \subsection{结果文件截图}
 
 \subsection{结果文件在HDFS上的路径}
+/user/2020st18/output2/
+\subsection{所有命令}
+jar包执行命令：hadoop jar /home/2020st18/HiveMyJoin.jar MyJoin.JoinDriver /data/exercise\_3 output2 
 
-\subsection{“江湖”“风雪”输出结果截图}
-
+hive建表命令：create table orders(id int,order\_date string,pid string,name string,price int,num int) row format delimited fields terminated by '\t' location '/user/2020st18/output2/';
+\subsection{hive 输出结果文件的部分截图}
+\begin{figure}[H]
+	\centering
+	\subfigure[orders表开头]
+	{
+		\includegraphics[width = 15cm]{hive1.PNG}
+	}
+	\vfill
+	\subfigure[orders表结尾]
+	{
+		\includegraphics[width = 15cm]{hive2.PNG}
+	}
+	
+	\caption{Hive执行结果}
+\end{figure}
 \subsection{Web UI 报告内容展示}
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 15cm]{job.PNG}
+	\caption{WebUI执行报告}
+\end{figure}
 \section{实验经验总结与改进方向}
 
 
