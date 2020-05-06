@@ -20,7 +20,7 @@
 \usepackage{xcolor}
 \usepackage{float}
 \usepackage{caption}
-
+ 
 \usepackage[utf8]{inputenc}
 \usepackage[UTF8]{ctex}
 
@@ -95,7 +95,7 @@
 \author{组长：韩畅，组员：李展烁、王一之、闫旭芃}
 \begin{document}
 %hello world
-%\listoffigures
+\listoffigures
 \captionsetup[figure]{labelfont={bf},labelformat={default},labelsep=period,name={图}}
 \title{大数据综合处理实验\\
 实验三}
