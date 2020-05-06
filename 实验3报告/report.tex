@@ -222,47 +222,40 @@ value设为空NullWritable，自定义key数据类型OrderBean，将数据全部
 \section{实验结果展示}
 \subsection{结果文件截图}
 
-\subsection{Hive输出结果截图}
+\subsection{结果文件在HDFS上的路径}
+/user/2020st18/output2/
+\subsection{所有命令}
+jar包执行命令：hadoop jar /home/2020st18/HiveMyJoin.jar MyJoin.JoinDriver /data/exercise\_3 output2 
+
+hive建表命令：create table orders(id int,order\_date string,pid string,name string,price int,num int) row format delimited fields terminated by '\t' location '/user/2020st18/output2/';
+\subsection{hive 输出结果文件的部分截图}
+\begin{figure}[H]
+	\centering
+	\subfigure[orders表开头]
+	{
+		\includegraphics[width = 15cm]{hive1.PNG}
+	}
+	\vfill
+	\subfigure[orders表结尾]
+	{
+		\includegraphics[width = 15cm]{hive2.PNG}
+	}
+	
+	\caption{Hive执行结果}
+\end{figure}
 
 \subsection{Web UI 报告内容展示}
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 15cm]{job.PNG}
+	\caption{WebUI执行报告}
+\end{figure}
 \section{实验经验总结与改进方向}
 \begin{itemize}
 	\item todo
 	\item todo
 	\item todo
 \end{itemize}
-% 下面是插入多个图片的示例代码
-
-% \begin{figure}[htbp]
-%     \centering
-    
-%     \subfigure[lenna-origin-rgb]
-%     {
-%     \label{fig1a}
-%     \includegraphics[height = 4cm]{lenna.png}
-%     }
-%     \hspace{1cm} % 设置图间距离
-%     \subfigure[lenna-origin-gray]
-%     {
-%     \label{fig1b}
-%     \includegraphics[height = 4cm]{img/lennaGray.png}
-%     }
-    
-%     \vfill % 换行
-%     \subfigure[lenna-matlab-fil0]{
-%         \label{fig1c}
-%         \includegraphics[height = 4cm]{img/lennaGrayFilCtrGrp.png}
-%     }
-%     \hspace{1cm}
-%     \subfigure[lenna-my-fil0]{
-%         \label{fig1d}
-%         \includegraphics[height = 4cm]{img/lennaGrayFil0My.png}
-%     }
-%       %设置配图文字
-%     \caption{We notice that the image generating by matlab's filter has black edge all around the output image, while our own filter only make the black edge at the upper left corner due to different 0-padding rules.}
-%     \label{fig1}
-% \end{figure}
 
 \bibliographystyle{plain}
 \bibliography{ref}
