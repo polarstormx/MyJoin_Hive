@@ -1,8 +1,0 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces mapreduce shuffle工作流程图\relax }}{3}{figure.caption.2}%
-\contentsline {figure}{\numberline {2}{\ignorespaces 自定义bean\relax }}{3}{figure.caption.3}%
-\contentsline {figure}{\numberline {3}{\ignorespaces orderbean部分代码实现\relax }}{4}{figure.caption.4}%
-\contentsline {figure}{\numberline {4}{\ignorespaces mapper部分实现\relax }}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {5}{\ignorespaces mapper部分实现\relax }}{5}{figure.caption.6}%
-\contentsline {figure}{\numberline {6}{\ignorespaces 排序示例\relax }}{6}{figure.caption.7}%
-\contentsline {figure}{\numberline {7}{\ignorespaces 自定义分组示例\relax }}{7}{figure.caption.8}%
-\contentsline {figure}{\numberline {8}{\ignorespaces 重写Comparator\relax }}{7}{figure.caption.9}%
