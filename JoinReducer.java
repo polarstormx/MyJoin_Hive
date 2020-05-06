@@ -15,14 +15,13 @@ public class JoinReducer extends Reducer<OrderBean, NullWritable, OrderBean, Nul
 		final Iterator<NullWritable> iterator = val.iterator();
 		iterator.next();
 		final String pName = key.getPName();
-		final String price = key.getPrice();
+		final String price = key.getPrice();//得到Pname及Price
 		while (iterator.hasNext()) {
 			iterator.next();
 			key.setPName(pName);
-			key.setPrice(price);
+			key.setPrice(price);//为所有项写入
 			context.write(key, NullWritable.get());
 		}
-		// TODO Auto-generated method stub
-		// super.reduce(arg0, arg1, arg2);
+
 	}
 }

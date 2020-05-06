@@ -16,7 +16,7 @@ public class OrderBean implements WritableComparable<OrderBean> {
 
 	@Override
 	public void readFields(DataInput d) throws IOException {
-		// TODO Auto-generated method stub
+
 		this.oId = d.readUTF();
 		this.oData = d.readUTF();
 		this.pId = d.readUTF();
@@ -27,7 +27,7 @@ public class OrderBean implements WritableComparable<OrderBean> {
 
 	@Override
 	public void write(DataOutput d) throws IOException {
-		// TODO Auto-generated method stub
+
 		d.writeUTF(oId);
 		d.writeUTF(oData);
 		d.writeUTF(pId);
@@ -38,7 +38,7 @@ public class OrderBean implements WritableComparable<OrderBean> {
 
 	@Override
 	public int compareTo(OrderBean o) {
-		// TODO Auto-generated method stub
+
 
 		int comRes = this.pId.compareTo(o.pId);//先按照pid排序
 		if (comRes == 0) {

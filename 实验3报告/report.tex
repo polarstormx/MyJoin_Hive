@@ -103,14 +103,16 @@
 
 \section{实验规划与设计}
 \subsection{任务分配}
-{171860551, \text{韩畅：}}\\ \indent
-{171860550, \text{王一之：}}\\ \indent
-{171860549, \text{闫旭芃：}}\\ \indent
-{171840565, \text{李展烁：}}
+{171860551, \text{韩畅：组长，项目规划，程序框架及大部分功能，主持程序运行调试、优化与提交}}\\ \indent
+{171860550, \text{王一之：代码管理，报告撰写，代码注释添加、整理}}\\ \indent
+{171860549, \text{闫旭芃：完善部分功能，添加代码注释，报告主体撰写}}\\ \indent
+{171840565, \text{李展烁：程序集群运行、调试、优化}}
 \subsection{任务要求}
-使用 MapReduce 完成两张表的 join 操作
+使用 MapReduce 完成两张表的 join 操作，存入到 Hive 中。
 \subsection{设计思路}
-实现两张表的join操作，可以利用mapreduce的特性，读入order和product将两张表到map中，将key打包成自定义的数据类型输出，并且按照两表中关联的条件排序依据，将两表满足join条件的数据并携带数据所来源的文件信息，发往同一个reduce task，在reduce中进行数据的串联
+实现两张表的join操作，可以利用mapreduce的特性，读入order和product将两张表到map中，
+将key打包成自定义的数据类型输出，并且按照两表中关联的条件排序依据，
+将两表满足join条件的数据并携带数据所来源的文件信息，发往同一个reduce task，在reduce中进行数据的串联
 \begin{figure}[H]
     \centering
 
@@ -154,7 +156,8 @@
 
     \includegraphics[width = 15cm]{map1.png}
 
-    \caption{mapper部分实现}
+    \caption{Mapper部分实现}
+    \label{mapper}
 \end{figure}
 \subsubsection{重写Partitioner}
 对map发出的数据进行分区，根据pid进行分区
@@ -163,11 +166,11 @@
 
     \includegraphics[width = 15cm]{part1.png}
 
-    \caption{mapper部分实现}
+    \caption{Partitioner部分实现}
 \end{figure}
 \subsubsection{排序}
-排序会根据key排序，由于key是自定义数据类型orderbean，所以在orderbean中需要自定义排序方法（见上）compareTo函数
-首先按照pid排序，然后按照pname排序。由于product中pid 是唯一的，所以相同的pid中只会有一个pname，并且会被排序到最前面，形成特定的结构
+排序会根据key排序，由于key是自定义数据类型orderbean，所以在orderbean中需要自定义排序方法（见上）\\
+compareTo函数首先按照pid排序，然后按照pname排序。由于product中pid 是唯一的，所以相同的pid中只会有一个pname，并且会被排序到最前面，形成特定的结构
 \begin{figure}[H]
     \centering
     \subfigure[按照pid进行排序]
@@ -198,35 +201,42 @@
     \caption{重写Comparator}
 \end{figure}
 \subsubsection{主功能Reduce设计思路}
-TODO:   主功能Reduce设计思路
+输入的第一对中的key为要join的对应的Pname及Price，将此值分别赋给之后的所有键值对中的key，并写入结果。
+\begin{figure}[H]
+    \centering
 
+    \includegraphics[width = 15cm]{reducer.png}
+
+    \caption{重写Reducer}
+    \label{reducer}
+\end{figure}
 
 \subsubsection{Key-Value类型协调}
 value设为空NullWritable，自定义key数据类型OrderBean，将数据全部封装到这里面，方便后续排序，分区，分组
 \subsection{代码演示}
 \subsubsection{Map阶段代码演示}
-已经包含在设计思路图片中
+已经包含在设计思路图片中，见图\ref{mapper}
 
 \subsubsection{Reduce阶段代码演示}
-
+同上,见图\ref{reducer}
 \section{实验结果展示}
 \subsection{结果文件截图}
 
-\subsection{结果文件在HDFS上的路径}
-
-\subsection{“江湖”“风雪”输出结果截图}
+\subsection{Hive输出结果截图}
 
 \subsection{Web UI 报告内容展示}
 
 \section{实验经验总结与改进方向}
-
-
-
+\begin{itemize}
+	\item todo
+	\item todo
+	\item todo
+\end{itemize}
 % 下面是插入多个图片的示例代码
 
 % \begin{figure}[htbp]
 %     \centering
-
+    
 %     \subfigure[lenna-origin-rgb]
 %     {
 %     \label{fig1a}
@@ -238,7 +248,7 @@ value设为空NullWritable，自定义key数据类型OrderBean，将数据全部
 %     \label{fig1b}
 %     \includegraphics[height = 4cm]{img/lennaGray.png}
 %     }
-
+    
 %     \vfill % 换行
 %     \subfigure[lenna-matlab-fil0]{
 %         \label{fig1c}
@@ -253,8 +263,6 @@ value设为空NullWritable，自定义key数据类型OrderBean，将数据全部
 %     \caption{We notice that the image generating by matlab's filter has black edge all around the output image, while our own filter only make the black edge at the upper left corner due to different 0-padding rules.}
 %     \label{fig1}
 % \end{figure}
-
-
 
 \bibliographystyle{plain}
 \bibliography{ref}
