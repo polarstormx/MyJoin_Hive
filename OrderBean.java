@@ -106,7 +106,7 @@ public class OrderBean implements WritableComparable<OrderBean> {
 		setOAmount(s6);
 	}
 	public String toString(){//不加toStirng函数，最后输出内存的地址
-		return oId + "\t" + oData + "\t" + pId + "\t" + pName + "\t" + price + "\t" + oAmount
+		return oId + "\t" + oData + "\t" + pId + "\t" + pName + "\t" + price + "\t" + oAmount;
 	}
 
 }

@@ -4,10 +4,9 @@ import java.io.IOException;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.NullWritable;
-import org.apache.hadoop.mapred.FileSplit;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-
-import com.sun.jersey.core.impl.provider.entity.XMLJAXBElementProvider.Text;
+import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
 public class JoinMapper extends Mapper<LongWritable, Text, OrderBean, NullWritable> {
 
